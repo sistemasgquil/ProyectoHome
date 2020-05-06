@@ -1,0 +1,74 @@
+<html lang="es">
+    <head>
+        <title>
+            Objectos usando Jquery Dimensiones
+        </title>
+        <meta charset="utf-8"/>
+
+        <script src="http://code.jquery.com/jquery-1.7.2.min.js"> </script>
+        <script>
+            $(document).on('ready',function()
+            {
+                console.log($('header img').width(100))
+            //$("#e1").height(50);
+            var pos=$('#e2 p').position();
+            console.log('Posicion left: '+pos.left+' Posicion top:'+ pos.top);
+            });
+            
+        </script>
+        <style>
+               body,html
+            {
+            background: #000;
+            color: #000;
+            font-family :'Times New Roman', Times, serif;
+            margin:0;
+            padding:0
+            }
+           /* var cssp={'color': 'white','font: outline'};  */
+            header
+            {
+                display :block;
+                margin: 0 auto;
+                width: 365px;
+            }
+            #e1,#e2
+            {
+                background: #0080ff;
+                display: block;
+                height:100px;
+                margin: 15px auto;
+                width: 400px;
+
+            }
+            #e1
+            {
+                background: #ff0040;
+                height: 100px;
+                border-radius: 40px 0 90px 0;
+            }
+            #e2
+            {
+            padding: 15px;
+            border-radius: 60px 0 60px 0;
+
+            }
+        </style>
+
+        
+    </head>
+
+    <body>
+<header>
+    <img src="../miscodigos/person.jpg" alt="CF" title="Empresaria"/>
+</header>
+<div id="e1">
+</br>
+ <p>   Ingrese su usuario:</p>
+
+</div>
+<div id="e2">
+    <p> Hola amigos!</p>
+</div>
+        </body>
+</html>
