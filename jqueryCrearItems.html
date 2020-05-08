@@ -1,0 +1,56 @@
+<html>
+    <head>
+<title> Jquery crear, copiar, y remover elementos </title>
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script>
+    // aplico funciones anonimas, con documento listo
+    $(document).on("ready",function(){
+
+             $('button').on('click',function(){
+               //  $('ol li:first').appendTo('ol:first');// primero al final
+                // $('ol li:first').appendTo($('ol:first'));
+               // $('ol:first').prepend($('ol li:last')); // el ultimo al principio
+ //var clon=$('ol li:first').clone();
+ //$('#e1').before(clon);
+
+//$('#e1').after($('ol li:first'));
+//$('#e1').before($('ol li:first'));
+
+// var nuevo_elemento=$('<p> Mundo muergano </p>')
+// $('#e1').append(nuevo_elemento); // insertar
+
+ $('ol li:last').remove();
+
+             })
+           
+    });
+ 
+</script>
+<header>
+    <img src="../ProyectoHome/person.jpg">
+</header>
+<ol>
+    <li>
+        Elemento 1
+    </li>
+    <li>Elemento 2</li>
+    <li>Elemento 3</li>
+    <li>Elemento 4</li>
+    
+</ol>
+<button id="test">Ejecutar jquery</button>
+    </head>
+        <body>
+            <div id='e1'>
+                <article>
+                </br>
+                       <p> Div 1</p>
+                </article>
+            </div>
+            <div>
+                <p> Div 2</p>
+            </div>
+            <span> </span>
+        </body>
+    
+</html>
