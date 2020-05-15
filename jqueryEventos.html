@@ -1,0 +1,27 @@
+<html>
+    <head>
+<title> Recorrer en DOM</title>
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script>
+    // aplico funciones anonimas, con documento listo
+    var seleccion;
+    $(document).on("ready",function(){
+
+            $('a').on("click",function(eventoDos){
+                e.preventDefault();
+                console.log($(this).attr('id'));
+            });
+    });
+ 
+</script>
+    </head>
+        <body>
+            <a href='http://www.google.com.ec' id='evento'>Hola a Todos</a>
+        </br>
+            <a href='http://www.hotmail.com' id='eventoDos'>Hola2</a>
+            
+           
+            
+        </body>
+    
+</html>
