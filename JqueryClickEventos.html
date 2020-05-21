@@ -1,0 +1,40 @@
+<html>
+    <head>
+<title> eventos click en check box</title>
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script>
+    // aplico funciones anonimas
+
+    $(document).on("ready",function(){
+
+$("#miImput").on('cambio',function(ev,id){
+if(this.checked)
+{
+    $('#miInput').removeAttr('checked');
+    $('.cambiar').text('Enceder1');
+}
+else
+{
+    $("miInput").attr('checked','checked');
+    $('.cambiar').text('El_Apagado');
+}
+});
+//******* aqui la magia q dispara el evento
+    $('.cambiar').on('click',function(){
+        $("#miInput").trigger('cambio',[$(this).attr('id')]);
+});
+            
+    });
+ 
+</script>
+
+    </head>
+        <body>
+        <input type="checkbox" id="miInput" checked="checked"/>
+        <button class="cambiar" id="BtnUno">Apagar</button>
+        <button class="cambiar" id="BtnDos">Apagar</button>
+
+
+        </body>
+    
+</html>
