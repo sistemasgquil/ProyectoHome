@@ -6,15 +6,27 @@
     // aplico funciones anonimas
 
     $(document).on('ready',function(){
+   /*
     var elem=$('#caja1');
-        $('#btn1').click(function(){
-            // Mostrar elemento
-            console.log('entro aqui Mostrar');
-            //elem.fadeIn(); //(50) el tiempo en segundos
-            elem.slideDown();
-            //elem.show();
+$('#btn1').click(function(){
 
-        })
+            // Mostrar elemento
+           console.log('entro aqui Mostrar');
+            //elem.fadeIn(); //(50) el tiempo en segundos
+        //    elem.slideDown();
+            elem.show();
+*/
+            $.fx.speeds.lento=3000;
+            $.fx.speeds.fast=100;
+$('#boton').on('click',function() {
+    console.log('entro aqui 1');
+    $('#caja1').fadeOut('lento');
+    $('body').append('El elemento se ha borrado');
+    });
+//});
+     //   })
+
+/*
         $('#btn2').click(function(){
     // ocultar elemento
     //elem.fadeOut();        
@@ -22,7 +34,7 @@
         elem.slideToggle();
       //  elem.hide();
         })
-
+*/
             
     });
  
@@ -48,6 +60,7 @@
             <!--  https://www.youtube.com/watch?v=neGu0AEXn4w -->
                 <button id="btn1">Mostrar</button>
                 <button id="btn2">Ocultar</button>
+                <button id="boton">fadeOut</button>
           
         </body>
     
