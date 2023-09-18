@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "P8jEeOiiGi+xegGDoPmKu8P7nysxFEe0e4IZFTuks77G9Pa5MEzXWwWa+JGUrTEQBu6AdYeXN60rjFsBad5XyA==",
+  "success": true,
+  "projectFilePath": "c:\\platzi\\webapi\\webapi.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Axel\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.0.1\\microsoft.aspnetcore.app.ref.3.0.1.nupkg.sha512",
+    "C:\\Users\\Axel\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.0.3\\microsoft.netcore.app.host.win-x64.3.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
