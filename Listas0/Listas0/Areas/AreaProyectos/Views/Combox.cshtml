@@ -1,0 +1,14 @@
+﻿@model List<SelectListItem>
+    @{ 
+        ViewBag.Tittle = "Combos";
+    }
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+         <div class="form-group">
+              Pais
+             @Html.DropDownList("GetCombos",Model,new { @class = "form-control" } )
+             </div>
+        
+    
+    </div>
+</div>

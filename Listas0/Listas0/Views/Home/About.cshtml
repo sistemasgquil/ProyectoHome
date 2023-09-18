@@ -1,0 +1,214 @@
+﻿
+@model  IEnumerable<Listas0.Models.Part>
+
+
+@{
+    ViewBag.Title = "Listas c# Vehiculos y Cilindrajes";
+    WebGrid grid = new WebGrid(Model);
+
+    <p>Información de Listas.</p>
+    <br />
+    
+
+    <br />
+    <hr />
+
+    <div>
+        <table border="1">
+            <tr>
+                <td>
+                    <b>  Combustible:</b>
+                </td>
+                <td>
+                    @Html.DropDownList("Combustion", ViewBag.Disponibilidad as SelectList) 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b> Cilindraje:</b>
+                </td>
+                <td>
+                    @Html.DropDownList("Cilindraje", ViewBag.Potencia as SelectList) 
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <b> Tracci&oacute;n: </b>
+                </td>
+                <td>
+                    @Html.DropDownList("Traccion", ViewBag.lsTaccion as SelectList)
+                    @*  @Html.DropDownListFor(x => x.Part, (IEnumerable<SelectListItem>)ViewBag.lsTaccion)*@
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>  Tonelaje(Peso): </b>
+                </td>
+                <td>
+                    @Html.DropDownList("Peso", ViewBag.Peso as SelectList)
+                    
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>  Colores: </b>
+                </td>
+                <td>
+                    @Html.DropDownList("Colores", ViewBag.Colores as SelectList)
+
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <b>  Garantias: </b>
+                </td>
+       
+            </tr>
+
+           
+           
+        </table>
+    </div>
+  
+   foreach (var op in ViewBag.Garantia)
+    {
+
+        <div>
+            @op.name
+            @op.Age
+
+            <hr />
+
+
+        </div>
+    }
+
+    <div class="form-group">
+        <label for="Generos" class="col-md-2 control-label">Aplica para Generos:</label>
+        <div class="col-md-10">
+
+            <label>  @Html.RadioButton("Masculino", ViewBag.Genero as SelectList) Masculino</label> 
+            <label>  @Html.RadioButton("Femenino", ViewBag.Genero as SelectList) Femenino</label>
+
+        </div>
+    </div>
+
+
+    <br>
+    <b> ID    &nbsp; &nbsp; &nbsp;  NOMBRE</b>
+
+    foreach (var item in Model)
+    {
+        @*Para recorrer datos del modelo, los muestra en varias lineas   IEnumerable<Listas0.Models.Part>   *@
+        <div>
+            @item.PartId
+            @item.PartName
+            
+             <hr />
+ 
+
+        </div>
+    }
+
+    <script>
+   
+    </script>
+    <input type="button" value="obtener el nombre" onclick="aElimina()">
+    <div id="resultado"></div>
+
+}     
+
+
+
+
+<h2>
+    
+    </h2>
+<div>
+    @Html.ActionLink("Regresar al Listado Principal", "Index")
+
+    <br />
+    <table>
+        <tr>
+            <td>
+                @foreach (var str in ViewBag.Collection)
+                {
+                    <u> @Html.Raw(str); <br /></u>
+
+                  
+                }
+            </td>
+        </tr>
+    </table>
+    
+</div>
+
+<div class="alert-danger">
+ @* @grid.GetHtml()*@
+    @grid.GetHtml()
+</div>
+
+@using (Html.BeginForm("Recupero", "Home",FormMethod.Post,new { @class="aElimina"}))
+{
+    <label>Code:</label>
+    <input type="text" name="dato1" />
+
+
+    <button type="submit">Enviar</button>
+}
+@using (Html.BeginForm("GetResultGenero", "Home", FormMethod.Post,new { @class = "aBtn2" } ))
+{
+    <label>Codigo(0,1):</label>
+    <input type="text" name="SuDato" />
+
+
+    <button type="submit">Enviar</button>
+
+}
+<b>El Resultado:@ViewBag.ResultGenero</b>
+
+
+
+@if (Session["Resultado"] != null)
+{<b>El Resultado es: @Session["Resultado"]</b> }
+<br/>
+
+<b>Usuario: @ViewBag.ResultUser</b>
+
+
+@section scripts
+{
+    <script>
+        
+        $(".aElimina").dblclick(
+            function (event) {
+            if (!confirm('Deseo Generar el codigo !'))
+            {
+                event.preventDefault();
+            }
+        }
+        );
+        $(".aBtn2").dblclick(
+          function (event) {
+              if (!confirm('Deseo Generar el codigo !')) {
+                  event.preventDefault();
+              }
+          }
+      );
+        $(".aBtn3").dblclick(
+  function (event) {
+      if (!confirm('Deseo Generar el codigo !')) {
+          event.preventDefault();
+      }
+  }
+);
+    </script>
+
+}
+
+
+
+@*<li>@Html.ActionLink("Listas Básico 0", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>*@
+

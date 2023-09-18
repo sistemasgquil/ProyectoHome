@@ -1,0 +1,446 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBALUMNOSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Agendar">
+    <Key>
+      <PropertyRef Name="empresa" />
+      <PropertyRef Name="sucursal" />
+      <PropertyRef Name="codigo" />
+      <PropertyRef Name="id_dr" />
+      <PropertyRef Name="id_person" />
+    </Key>
+    <Property Name="empresa" Type="Int32" Nullable="false" />
+    <Property Name="sucursal" Type="Int32" Nullable="false" />
+    <Property Name="codigo" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_dr" Type="Int64" Nullable="false" />
+    <Property Name="id_person" Type="Int64" Nullable="false" />
+    <Property Name="fecha_desde" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="fecha_hasta" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="hora_inicio" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="hora_fin" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="observacion" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="sucrusal" Relationship="Self.FK_Agendar_sucrusal" FromRole="Agendar" ToRole="sucrusal" />
+  </EntityType>
+  <EntityType Name="Alumno">
+    <Key>
+      <PropertyRef Name="empresa" />
+      <PropertyRef Name="sucursal" />
+      <PropertyRef Name="codigo" />
+    </Key>
+    <Property Name="empresa" Type="Int32" Nullable="false" />
+    <Property Name="sucursal" Type="Int32" Nullable="false" />
+    <Property Name="codigo" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="apellido" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="telefono" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="pk" Type="Int32" Nullable="false" />
+    <Property Name="sexo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="fe_nac" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CodCiudad" Type="Int32" />
+    <Property Name="EstadoCivil" Type="Int32" />
+    <Property Name="Hijos" Type="Int32" />
+    <Property Name="Conyuge" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="Documento" Type="Int32" />
+    <Property Name="cedula" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ciudad" Relationship="Self.FK_Alumno_ciudad" FromRole="Alumno" ToRole="ciudad" />
+    <NavigationProperty Name="DocumentosId" Relationship="Self.FK_Alumno_DocumentosId" FromRole="Alumno" ToRole="DocumentosId" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+    <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+  </EntityType>
+  <EntityType Name="caja">
+    <Key>
+      <PropertyRef Name="empresa" />
+      <PropertyRef Name="sucursal" />
+      <PropertyRef Name="codigo" />
+    </Key>
+    <Property Name="empresa" Type="Int32" Nullable="false" />
+    <Property Name="sucursal" Type="Int32" Nullable="false" />
+    <Property Name="codigo" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ptovta" Type="Int32" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ciudad">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="idpais" Type="Int32" />
+    <NavigationProperty Name="Alumno" Relationship="Self.FK_Alumno_ciudad" FromRole="ciudad" ToRole="Alumno" />
+  </EntityType>
+  <EntityType Name="doctor">
+    <Key>
+      <PropertyRef Name="empresa" />
+      <PropertyRef Name="sucursal" />
+      <PropertyRef Name="codigo" />
+    </Key>
+    <Property Name="empresa" Type="Int32" Nullable="false" />
+    <Property Name="sucursal" Type="Int32" Nullable="false" />
+    <Property Name="codigo" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="apellido" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="especializacion" Type="Int32" />
+    <Property Name="direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="observacion" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="sucrusal" Relationship="Self.FK_doctor_sucrusal" FromRole="doctor" ToRole="sucrusal" />
+  </EntityType>
+  <EntityType Name="DocumentosId">
+    <Key>
+      <PropertyRef Name="iddoc" />
+    </Key>
+    <Property Name="iddoc" Type="Int32" Nullable="false" />
+    <Property Name="nombres" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="Int32" />
+    <NavigationProperty Name="Alumno" Relationship="Self.FK_Alumno_DocumentosId" FromRole="DocumentosId" ToRole="Alumno" />
+  </EntityType>
+  <EntityType Name="empresa">
+    <Key>
+      <PropertyRef Name="codigo" />
+    </Key>
+    <Property Name="codigo" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="sucrusal" Relationship="Self.FK_sucrusal_empresa" FromRole="empresa" ToRole="sucrusal" />
+  </EntityType>
+  <EntityType Name="especializacion">
+    <Key>
+      <PropertyRef Name="codigo" />
+    </Key>
+    <Property Name="codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="pais">
+    <Key>
+      <PropertyRef Name="idpais" />
+    </Key>
+    <Property Name="idpais" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Name="estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="sucrusal">
+    <Key>
+      <PropertyRef Name="codigoempresa" />
+      <PropertyRef Name="sucursal" />
+    </Key>
+    <Property Name="codigoempresa" Type="Int32" Nullable="false" />
+    <Property Name="sucursal" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="Agendar" Relationship="Self.FK_Agendar_sucrusal" FromRole="sucrusal" ToRole="Agendar" />
+    <NavigationProperty Name="doctor" Relationship="Self.FK_doctor_sucrusal" FromRole="sucrusal" ToRole="doctor" />
+    <NavigationProperty Name="empresa" Relationship="Self.FK_sucrusal_empresa" FromRole="sucrusal" ToRole="empresa" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="usuario">
+    <Key>
+      <PropertyRef Name="codigo" />
+      <PropertyRef Name="empresa" />
+      <PropertyRef Name="sucursal" />
+      <PropertyRef Name="usuario1" />
+    </Key>
+    <Property Name="codigo" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="empresa" Type="Int32" Nullable="false" />
+    <Property Name="sucursal" Type="Int32" Nullable="false" />
+    <Property Name="usuario1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="clave" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="100" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="nivel" Type="Int32" />
+    <Property Name="modulo" Type="Int32" />
+    <Property Name="pantalla" Type="Int32" />
+    <Property Name="estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="View_Alumno">
+    <Key>
+      <PropertyRef Name="codigo" />
+      <PropertyRef Name="apellido" />
+      <PropertyRef Name="nombre" />
+      <PropertyRef Name="fe_nac" />
+      <PropertyRef Name="empresa" />
+      <PropertyRef Name="sucursal" />
+    </Key>
+    <Property Name="codigo" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="apellido" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="telefono" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="Expr1" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Name="fe_nac" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="empresa" Type="Int32" Nullable="false" />
+    <Property Name="sucursal" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Agendar_sucrusal">
+    <End Role="sucrusal" Type="Self.sucrusal" Multiplicity="1" />
+    <End Role="Agendar" Type="Self.Agendar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sucrusal">
+        <PropertyRef Name="codigoempresa" />
+        <PropertyRef Name="sucursal" />
+      </Principal>
+      <Dependent Role="Agendar">
+        <PropertyRef Name="empresa" />
+        <PropertyRef Name="sucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Alumno_ciudad">
+    <End Role="ciudad" Type="Self.ciudad" Multiplicity="0..1" />
+    <End Role="Alumno" Type="Self.Alumno" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ciudad">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Alumno">
+        <PropertyRef Name="CodCiudad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Alumno_DocumentosId">
+    <End Role="DocumentosId" Type="Self.DocumentosId" Multiplicity="0..1" />
+    <End Role="Alumno" Type="Self.Alumno" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DocumentosId">
+        <PropertyRef Name="iddoc" />
+      </Principal>
+      <Dependent Role="Alumno">
+        <PropertyRef Name="Documento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_doctor_sucrusal">
+    <End Role="sucrusal" Type="Self.sucrusal" Multiplicity="1" />
+    <End Role="doctor" Type="Self.doctor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sucrusal">
+        <PropertyRef Name="codigoempresa" />
+        <PropertyRef Name="sucursal" />
+      </Principal>
+      <Dependent Role="doctor">
+        <PropertyRef Name="empresa" />
+        <PropertyRef Name="sucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sucrusal_empresa">
+    <End Role="empresa" Type="Self.empresa" Multiplicity="1" />
+    <End Role="sucrusal" Type="Self.sucrusal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empresa">
+        <PropertyRef Name="codigo" />
+      </Principal>
+      <Dependent Role="sucrusal">
+        <PropertyRef Name="codigoempresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="DBALUMNOSEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+    <EntitySet Name="Agendar" EntityType="Self.Agendar" />
+    <EntitySet Name="Alumno" EntityType="Self.Alumno" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
+    <EntitySet Name="caja" EntityType="Self.caja" />
+    <EntitySet Name="ciudad" EntityType="Self.ciudad" />
+    <EntitySet Name="doctor" EntityType="Self.doctor" />
+    <EntitySet Name="DocumentosId" EntityType="Self.DocumentosId" />
+    <EntitySet Name="empresa" EntityType="Self.empresa" />
+    <EntitySet Name="especializacion" EntityType="Self.especializacion" />
+    <EntitySet Name="pais" EntityType="Self.pais" />
+    <EntitySet Name="sucrusal" EntityType="Self.sucrusal" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="usuario" EntityType="Self.usuario" />
+    <EntitySet Name="View_Alumno" EntityType="Self.View_Alumno" />
+    <AssociationSet Name="FK_Agendar_sucrusal" Association="Self.FK_Agendar_sucrusal">
+      <End Role="sucrusal" EntitySet="sucrusal" />
+      <End Role="Agendar" EntitySet="Agendar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Alumno_ciudad" Association="Self.FK_Alumno_ciudad">
+      <End Role="ciudad" EntitySet="ciudad" />
+      <End Role="Alumno" EntitySet="Alumno" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Alumno_DocumentosId" Association="Self.FK_Alumno_DocumentosId">
+      <End Role="DocumentosId" EntitySet="DocumentosId" />
+      <End Role="Alumno" EntitySet="Alumno" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_doctor_sucrusal" Association="Self.FK_doctor_sucrusal">
+      <End Role="sucrusal" EntitySet="sucrusal" />
+      <End Role="doctor" EntitySet="doctor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sucrusal_empresa" Association="Self.FK_sucrusal_empresa">
+      <End Role="empresa" EntitySet="empresa" />
+      <End Role="sucrusal" EntitySet="sucrusal" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(DBALUMNOSModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(DBALUMNOSModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="SpConsUsuario" ReturnType="Collection(DBALUMNOSModel.SpConsUsuario_Result)">
+      <Parameter Name="idusuario" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SpConsUsuario_Result">
+    <Property Type="Int64" Name="codigo" Nullable="false" />
+    <Property Type="Int32" Name="empresa" Nullable="false" />
+    <Property Type="Int32" Name="sucursal" Nullable="false" />
+    <Property Type="String" Name="Usuario1" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="clave" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="nivel" Nullable="true" />
+    <Property Type="Int32" Name="modulo" Nullable="true" />
+    <Property Type="Int32" Name="pantalla" Nullable="true" />
+    <Property Type="String" Name="estado" Nullable="true" MaxLength="1" />
+  </ComplexType>
+</Schema>

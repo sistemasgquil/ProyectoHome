@@ -1,0 +1,73 @@
+﻿@*@model Listas0.Areas.AreaProyectos.Models.pais*@
+
+@{
+    ViewBag.Title = "Contact";
+    List<SelectListItem> itemsPais = (List<SelectListItem>)ViewBag.CmbPais;
+    
+
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<address>
+    One Microsoft Way<br />
+    Redmond, WA 98052-6399<br />
+    <abbr title="Phone">P:</abbr>
+    425.555.0100
+</address>
+
+<address>
+    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+</address>
+
+@using (Html.BeginForm(null, null, FormMethod.Get))
+{
+    <table border="1">
+        <tr>
+            <td>
+                Persona:
+            </td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Telef:
+            </td>
+            <td>
+
+            </td>
+        </tr>
+
+    </table>
+
+   <table border="1">
+       <tr>
+           <td colspan="=2">
+               @Html.DropDownList("Pais", itemsPais, "Selecciona un País porfavor", new { @class = "form-control" })
+           </td>
+       </tr>
+       <tr>
+           <td>
+               Ciudad:
+           </td>
+           <td>
+               @{List<SelectListItem> itemsCiudad = (List<SelectListItem>)ViewBag.CmbCiudad;   }
+               @Html.DropDownList("Ciudad", itemsCiudad)
+           </td>
+
+       </tr>
+       <tr>
+           <td>
+               Documento:
+           </td>
+           <td>
+               @Html.DropDownList("Documentos", (List<SelectListItem>)ViewBag.CmbDocumentosId)
+           </td>
+       </tr>
+   </table>
+  
+  
+}

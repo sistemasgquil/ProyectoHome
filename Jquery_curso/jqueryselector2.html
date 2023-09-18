@@ -1,0 +1,45 @@
+<html>
+    <head>
+<title> Selectores Jquery</title>
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script>
+    // aplico funciones anonimas, con documento listo
+    var seleccion;
+    $(document).on("ready",function(){
+         seleccion=$('.ejem1');
+        if(seleccion.length)
+        {
+           // document.write('Existen..:' + seleccion.length);
+            seleccion.has('p').text('Este tiene <p>');
+        }
+        else
+         {
+            document.write('no existen elementos');
+        // seleccion.not('.cl1').text('Este elemento no tiene la clase cl1')
+ 
+         }  
+       $('li').first().html('<strong> Soy el elemento uno </strong>');
+    $('li').eq(2).text("Soy el elemento 3");
+    });
+ 
+</script>
+    </head>
+        <body>
+            <div class='ejem1 cl1'>
+                
+        <b></p>>          
+            </div>
+          
+                <div class="ejem1">
+                    <span> </span>             
+            </div>
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            
+        </body>
+    
+</html>

@@ -1,0 +1,67 @@
+<html>
+    <head>
+<title> eventos de efecto jquery</title>
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script>
+    // aplico funciones anonimas
+
+    $(document).on('ready',function(){
+   /*
+    var elem=$('#caja1');
+$('#btn1').click(function(){
+
+            // Mostrar elemento
+           console.log('entro aqui Mostrar');
+            //elem.fadeIn(); //(50) el tiempo en segundos
+        //    elem.slideDown();
+            elem.show();
+*/
+            $.fx.speeds.lento=3000;
+            $.fx.speeds.fast=100;
+$('#boton').on('click',function() {
+    console.log('entro aqui 1');
+    $('#caja1').fadeOut('lento');
+    $('body').append('El elemento se ha borrado');
+    });
+//});
+     //   })
+
+/*
+        $('#btn2').click(function(){
+    // ocultar elemento
+    //elem.fadeOut();        
+        //elem.slideUp();
+        elem.slideToggle();
+      //  elem.hide();
+        })
+*/
+            
+    });
+ 
+</script>
+
+<style>
+        #caja1
+        {
+           background: rgba(56,56,56,0.8); 
+           display: block;
+           height: 80px;
+            margin:5% auto;
+            width: 400px;
+            text-align: center;
+        }
+</style>
+
+    </head>
+        <body>
+            <div id="caja1">
+                <input type="text" id="Texto1" value="Todo bien gracias a Dios" title="Ok">
+            </div>
+            <!--  https://www.youtube.com/watch?v=neGu0AEXn4w -->
+                <button id="btn1">Mostrar</button>
+                <button id="btn2">Ocultar</button>
+                <button id="boton">fadeOut</button>
+          
+        </body>
+    
+</html>

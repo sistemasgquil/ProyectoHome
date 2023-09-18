@@ -1,0 +1,50 @@
+<html lang="es">
+    <head>
+        <title>
+           Clases devuelve atributos jquery
+        </title>
+        <meta charset="utf-8"/>
+
+        <script src="http://code.jquery.com/jquery-1.7.2.min.js"> </script>
+      
+      <script>
+            $(document).on('ready',function()
+            {
+              /*
+                $('#prueba').attr('class',function(){
+                var cadena="Hola mundo pig"; return cadena;
+                });
+                
+                //var clase=$('#prueba').removeAttr('class');
+                var clase=$("#prueba").attr('class');
+                alert(clase);
+            */
+            $('a').on("click",function(e){
+                e.preventDefault();
+                var ellink= $(this).attr('href');
+                alert("Usted esta saliendo del sistio");
+                location.href=ellink;
+            });
+         
+           });
+
+    
+            
+        </script>
+
+        
+    </head>
+
+    <body>
+        <h1> aviso si sales de la pagina</h1>
+<div id='prueba' class="pruebaClass">
+    <a href="https://www.forticlient.com/downloads">C&oacute;digo Facilito.</a>
+    <!-- https://www.youtube.com/watch?v=gx73iUKJKoM -->
+    <br/>
+    <input type="=text" name="nombre" placeholder="inserta tu dato">
+
+</div>
+
+
+        </body>
+</html>

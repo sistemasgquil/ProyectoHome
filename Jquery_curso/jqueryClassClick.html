@@ -1,0 +1,53 @@
+<html lang="es">
+    <head>
+        <title>
+           Clases css con jquery
+        </title>
+        <meta charset="utf-8"/>
+
+        <script src="http://code.jquery.com/jquery-1.7.2.min.js"> </script>
+      <style>
+          .test
+          {
+              background-color: tomato;
+              text-align: center;
+              font-size: larger;
+              font-family: Georgia, 'Times New Roman', Times, serif;
+          }
+      </style>
+      <script>
+            $(document).on('ready',function()
+            {
+                
+           $(document).on("click",function(){
+              // $('#test').addClass("test");
+              // $('#test').removeClass("test");
+              $('#test').toggleClass('test');
+              if($('#test').hasClass('test'))
+              {
+                  $("#test").text("Hey! soy color rojo");
+              }else
+              {
+                $("#test").text("Hey! soy color rojo :)");
+                 var algo="Hey! soy color rojo :)";
+                alert(algo);
+              }
+           });
+
+            });
+            
+        </script>
+
+        
+    </head>
+
+    <body>
+<div id='test'>Click on me
+    <input type="=text" name="nombre" placeholder="inserta tu dato">
+</div>
+
+</div>
+
+
+        </body>
+</html>

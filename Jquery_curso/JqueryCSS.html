@@ -1,0 +1,86 @@
+<html lang="es">
+    <head>
+        <title>
+            Metodo CSS
+        </title>
+        <meta charset="utf-8"/>
+
+        <script src="http://code.jquery.com/jquery-1.7.2.min.js"> </script>
+        <script>
+            $(document).on('ready',function()
+            {
+              $('body,html').css('background','#FFF');
+           // algo mas extenso, para poner varias cosas. usando json estructura.
+           var cssH1={'text-align': 'center','color': 'red','font-family':'monospace'} 
+           $('h1').css(cssH1);
+
+
+           // algo rapido en una linea
+             /* $('h1').css('text-align','center'); */
+
+$('h1').css(cssH1);
+var bgItem2=$('#item2').css('background-color');
+var citem2=$('#item2').css('color');
+if(bgItem2==citem2)
+    $('#item2').css('color','#FFF');
+
+            });
+            
+        </script>
+       <style>
+            body,html
+            {
+            background: #ccc;
+            color: #000;
+            font-family :'Times New Roman', Times, serif;
+            margin:0;
+            padding:0
+            }
+            h3{color: #018;}
+            #item1
+            {
+                background: #f6f6f6;
+                height: 50px;
+                margin: 5% auto;
+                width: 300px;
+            }
+            #item2
+            {
+                display: block;
+                background: #000;
+                height: 70px;
+                margin: 5% auto;
+                width: 400px;
+              text-align: center; 
+            }
+            #itempie
+            {
+                display: block;
+                background: #018;
+                height: 50px;
+                margin: 5% auto;
+                width: 300px;
+                text-align: center; 
+                text-decoration-color: turquoise; 
+                text-decoration: whitesmoke;
+                font-family: fantasy;
+            }
+        </style>
+   
+
+        
+    </head>
+
+    <body>
+      <!--  <p id='parrafoPeluche'><b>"hola q tal"</b></p> -->
+      <h1>M&eacute;todo . Css() con ejecutor Jquery</h1>
+<div id="item1" class="ejemplo1"> Item 1</div>
+
+<div id="item2" class="ejemplo2"> Item 2 
+    <article> <p> <h3> Todo bien</h3></p></article>
+</div>
+<div id="itempie"> Pie de P&aacute;gina </div>
+
+
+        </body>
+</html>

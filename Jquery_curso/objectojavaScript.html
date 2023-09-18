@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>
+            Objectos Clases en Javascript
+        </title>
+    </head>
+    <body>
+        <script type="text/javascript">
+        // creación de clases de javascript, y variable para llamar y ejecutar.
+        var Gato=new clasegato("Bola de pelos",5,"Cueva Mullo");
+var Gato2=new clasegato("Minino",4,"Ontaneda Lopez");
+function clasegato(nombre,edad,Familia)
+{
+    this.nombre=nombre;
+    this.edad=edad;
+    this.Familia=Familia;
+    this.maulla=function(){
+        alert(this.nombre+ " Miauuu");
+    };
+    this.comida=function(){
+        alert("Familia: "+this.Familia+ " Come Drop chau");
+    };
+} // fin de clase: clasegato
+alert("El gato se llama: "+Gato.nombre+" Edad:"+Gato.edad +" Familia:"+Gato.Familia);
+alert("El segundo gato se llama: "+Gato2.nombre);
+Gato.maulla();
+Gato2.comida();
+        </script>
+    </body>
+</html>

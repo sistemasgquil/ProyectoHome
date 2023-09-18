@@ -1,0 +1,40 @@
+<html>
+    <head>
+<title> Recorrer en Jquery</title>
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script>
+    // aplico funciones anonimas, con documento listo
+    var seleccion;
+    $(document).on("ready",function(){
+    // $('#primero') .next().text();
+     //console.log( $('#primero').next().text());
+     //console.log( $('#padre').children().attr('id'));
+     //console.log( $('#test').parent().text());
+     //console.log( $('#primero').siblings());
+     $("ul li").each(function(index,elemento){
+         //console.log("Este elemnto tiene este texto: "+ $(elemento).text());
+         console.table("Este elemnto número "+index +" contiene este texto: "+ $(elemento).text());
+     });
+    });
+ 
+</script>
+    </head>
+        <body>
+            <div>
+          <article id="padre"> 
+              Hey!! :D
+              <div id='test'>Soy el hijo</div>
+                    </article>
+
+            </div>
+
+            <ul>
+                <li id='primero'>Soy el primero</li>
+                <li>Soy el que sigue</li>
+                <li>Soy el que sigue Peluche3</li>
+                
+            </ul>
+            
+        </body>
+    
+</html>
